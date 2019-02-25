@@ -71,3 +71,7 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+def parse_json
+  JSON.parse(response.body, symbolize_names: true)[:data]
+end
