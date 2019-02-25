@@ -1,11 +1,11 @@
 class Api::V1::SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
-    render json:
+
     if @user.authenticate(params[:password])
-      success_json
+      render json: success_json
     else
-      failure_json
+      render json: failure_json, status: 401
     end
   end
 
