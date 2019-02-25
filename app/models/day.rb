@@ -16,9 +16,11 @@ class Day
     end
   end
 
-  def gif
+  def gif(service)
     {
-      
+      time: @date,
+      summary: @weather_type,
+      url: service.weather_gif(@weather_type)
     }
   end
 
