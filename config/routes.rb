@@ -8,6 +8,8 @@ Rails.application.routes.draw do
       resources :favorites, only: [:create, :index, :destroy]
 
       resources :sessions, only: :create
+
+      resources :gifs, only: :index
     end
   end
 end

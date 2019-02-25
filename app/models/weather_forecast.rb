@@ -1,4 +1,5 @@
 class WeatherForecast
+  attr_reader :future
   def initialize(params)
     @service = WeatherService.new
     @city, @state = params[:location].split(',').map(&:titleize)
@@ -35,6 +36,4 @@ class WeatherForecast
   end
 
   private
-
-
 end

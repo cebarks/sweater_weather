@@ -16,6 +16,12 @@ class Day
     end
   end
 
+  def gif
+    {
+      
+    }
+  end
+
   def hsh
     hash = {
       day: @day_of_week,
