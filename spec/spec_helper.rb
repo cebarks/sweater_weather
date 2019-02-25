@@ -50,7 +50,10 @@ require 'vcr'
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/cassettes'
   c.hook_into :webmock
+  c.configure_rspec_metadata!
 
   c.filter_sensitive_data('<DARKSKY_SECRET>') { ENV["DARKSKY_SECRET"] }
   c.filter_sensitive_data('<GOOGLE_CLOUD_TOKEN>') { ENV["GOOGLE_CLOUD_TOKEN"] }
+  c.filter_sensitive_data('<FLICKR_KEY>') { ENV["FLICKR_KEY"] }
+  c.filter_sensitive_data('<GIPHY_KEY>') { ENV["GIPHY_KEY"] }
 end

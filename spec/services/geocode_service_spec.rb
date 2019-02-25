@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Geocode Service" do
-  it "can return a lat/long for a city" do
+  it "can return a lat/long for a city", :vcr do
     service = GeocodeService.new
 
     res = service.location("Denver,CO")

@@ -11,10 +11,10 @@ class WeatherForecast
 
     @today = Day.new(weather[:daily][:data].first, weather[:hourly][:data])
     @future_forecast = weather[:daily][:summary]
-    @future = weather[:daily][:data].each {|e| Day.new(e)}
+    @future = weather[:daily][:data].map {|e| Day.new(e)}
   end
 
-  def hash
+  def hsh
     {
       data: {
         info: {
@@ -24,10 +24,10 @@ class WeatherForecast
           background_href: @background_href
         },
         weather: {
-          today: @today.hash,
+          today: @today.hsh,
           future: {
             forecast: @future_forecast,
-            data: @future.map(&:hash)
+            data: @future.map(&:hsh)
           }
         }
       }

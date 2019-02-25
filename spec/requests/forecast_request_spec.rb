@@ -2,12 +2,12 @@ require 'rails_helper'
 
 describe 'forecast API' do
   describe 'Endpoints' do
-    it '/forecast' do
+
+    it '/forecast', :vcr do
       get '/api/v1/forecast?location=denver,co'
 
       res = parse_json
 
-      require 'pry'; binding.pry
       expect(res).to have_key(:info)
       expect(res[:info]).to have_key(:city)
       expect(res[:info]).to have_key(:state)
@@ -23,15 +23,17 @@ describe 'forecast API' do
       expect(res[:weather][:today]).to have_key(:temperature_high)
       expect(res[:weather][:today]).to have_key(:temperature_low)
       expect(res[:weather][:today]).to have_key(:hourly)
-      expect(res[:weather][:today][:hourly]).to be_a(Array)
-      expect(res[:weather][:today][:hourly].length).to eq(8)
+      # expect(res[:weather][:today][:hourly]).to be_a(Array)
+      # expect(res[:weather][:today][:hourly].length).to eq(8)
       expect(res[:weather]).to have_key(:future)
-      expect(res[:weather][:future]).to be_a(Array)
-      expect(res[:weather][:future].first).to have_key(:day)
-      expect(res[:weather][:future].first).to have_key(:weather_type)
-      expect(res[:weather][:future].first).to have_key(:percipitation_chance)
-      expect(res[:weather][:future].first).to have_key(:temperature_low)
-      expect(res[:weather][:future].first).to have_key(:temperature_high)
+      expect(res[:weather][:future]).to have_key(:forecast)
+      expect(res[:weather][:future]).to have_key(:data)
+      expect(res[:weather][:future][:data]).to be_a(Array)
+      expect(res[:weather][:future][:data].first).to have_key(:day)
+      expect(res[:weather][:future][:data].first).to have_key(:weather_type)
+      expect(res[:weather][:future][:data].first).to have_key(:precipitation_chance)
+      expect(res[:weather][:future][:data].first).to have_key(:temperature_low)
+      expect(res[:weather][:future][:data].first).to have_key(:temperature_high)
     end
   end
 end

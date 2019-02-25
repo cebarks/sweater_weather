@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "Darksky Service" do
-  it "can get weather for a lat,long" do
+  it "can get weather for a lat,long", :vcr do
     service = DarkskyService.new
 
     res = JSON.parse(service.forecast(39.7392358,-104.990251), symbolize_names: true)

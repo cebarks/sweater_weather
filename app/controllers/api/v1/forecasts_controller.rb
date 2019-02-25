@@ -1,6 +1,6 @@
 class Api::V1::ForecastsController < ApplicationController
   def show
-    render json: WeatherForecast.new(weather_params).hash
+    render json: WeatherForecast.new(weather_params).hsh
   end
 
   private

@@ -16,7 +16,7 @@ class Day
     end
   end
 
-  def hash
+  def hsh
     hash = {
       day: @day_of_week,
       weather_type: @weather_type,
