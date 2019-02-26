@@ -1,8 +1,13 @@
 class User < ApplicationRecord
-  validates_presence_of :email
   has_secure_password
+  validates_presence_of :email
 
-  def api_key
-    Digest::SHA2.hexdigest email
+  after_create :generate_api_key
+
+  private
+
+  def generate_api_key
+    self.api_key = Digest::SHA2.hexdigest email
+    self.save
   end
 end

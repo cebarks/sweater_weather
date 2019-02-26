@@ -3,7 +3,7 @@ class WeatherForecast
   def initialize(params)
     @service = WeatherService.new
     @city, @state = params[:location].split(',').map(&:titleize)
-    @background_href = ""
+    @background_href = "https://as-sweater-weather.herokuapp.com/api/v1/backgrounds?location=#{params[:location]}"
     parse_weather @service.weather(params[:location])
   end
 

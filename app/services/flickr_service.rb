@@ -5,6 +5,7 @@ class FlickrService
       request.params["accuracy"] = "11"
       request.params["lat"] = lat
       request.params["long"] = long
+      request.params["tags"] = 'landscape'
 
       request.params["text"] = name if name
     end
