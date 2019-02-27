@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       get '/forecast', to: 'forecasts#show', as: 'forecast'
 
       get '/backgrounds', to: 'backgrounds#show', as: 'backgrounds'
+      get '/locations', to: 'locations#show', as: 'locations'
 
       resources :users, only: :create
       resources :favorites, only: [:create, :index, :destroy]
