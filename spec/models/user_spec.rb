@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  describe "validations" do
+    it {should validate_presence_of(:email)}
+    it {should have_many(:favorites)}
+  end
+
   describe "instance methods" do
     it "#api_key" do
       user = User.create!(email: "whatever@example.com", password: "password", password_confirmation: "password")
