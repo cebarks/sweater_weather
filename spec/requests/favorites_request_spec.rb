@@ -41,7 +41,7 @@ describe "favorites API" do
       user = User.create!(email: 'test@example.com', password: '123', password_confirmation: '123')
       favorite = Favorite.create!(user: user, location: location)
 
-      delete "/api/v1/favorites?favorite=#{favorite.id}&api_key=#{user.api_key}"
+      delete "/api/v1/favorites?location=#{location.id}&api_key=#{user.api_key}"
 
       res = parse_json
 
